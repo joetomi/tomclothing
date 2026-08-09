@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Promotion } from '@/types/site';
 
 const STORY_DURATION = 6500;
-const TRANSITION_DURATION = 550;
+const TRANSITION_DURATION = 180;
 
 export default function StoriesCarousel({ promotions }: { promotions: Promotion[] }) {
   const enabledPromotions = useMemo(
