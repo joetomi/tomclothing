@@ -83,8 +83,8 @@ export default function Header({ brand, navigation }: HeaderProps) {
         aria-label="القائمة"
       >
         <span className="relative block h-[10px] w-[27px] drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
-          <span className="absolute left-0 top-0 block h-[2px] w-full bg-white" />
-          <span className="absolute bottom-0 left-0 block h-[2px] w-full bg-white" />
+          <span className="absolute left-0 top-0 block h-[2px] w-full bg-black" />
+          <span className="absolute bottom-0 left-0 block h-[2px] w-full bg-black" />
         </span>
       </button>
 
