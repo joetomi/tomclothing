@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-alexandria: 'Alexandria', sans-serif;
+    --font-amiri: 'Amiri', serif;
+    --font-cormorant: 'Cormorant Garamond', serif;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    direction: rtl;
+    background-color: #000000;
+    color: #FFFFFF;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    font-family: var(--font-alexandria), system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg, video {
+    display: block;
+    max-width: 100%;
+  }
+
+  ::selection {
+    background-color: #FFFFFF;
+    color: #000000;
+  }
+}
+
+/* Custom Editorial Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #4B4B48;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FFFFFF;
+}

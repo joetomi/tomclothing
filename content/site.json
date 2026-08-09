@@ -1,0 +1,376 @@
+{
+  "brand": {
+    "name": "TOM",
+    "arabicName": "توم للملابس",
+    "tagline": "رؤية معاصرة للأنوثة، تُروى عبر الصورة.",
+    "seoDescription": "TOM — مجلة أزياء نسائية تقدم التشكيلات والإطلالات من خلال رؤية بصرية معاصرة."
+  },
+  "navigation": [
+    {
+      "id": "nav-new",
+      "label": "الجديد",
+      "href": "#new",
+      "visible": true
+    },
+    {
+      "id": "nav-collection",
+      "label": "التشكيلة",
+      "href": "#collection",
+      "visible": true
+    },
+    {
+      "id": "nav-about",
+      "label": "عن TOM",
+      "href": "#about",
+      "visible": true
+    },
+    {
+      "id": "nav-stores",
+      "label": "الفروع",
+      "href": "#stores",
+      "visible": true
+    },
+    {
+      "id": "nav-contact",
+      "label": "تواصل معنا",
+      "href": "#contact",
+      "visible": true
+    }
+  ],
+  "hero": {
+    "image": "/uploads/tom-storefront-hero.webp",
+    "mobileImage": "/uploads/tom-storefront-hero.webp",
+    "title": "",
+    "subtitle": "",
+    "actionText": "",
+    "actionHref": "#collection",
+    "visible": true,
+    "focalPoint": {
+      "desktop": { "x": 50, "y": 38 },
+      "mobile": { "x": 50, "y": 38 }
+    }
+  },
+  "editorialScenes": [
+    {
+      "id": "scene-01",
+      "type": "full-screen",
+      "visible": false,
+      "order": 1,
+      "images": [
+        {
+          "id": "img-scene-1",
+          "src": "/uploads/look-01.jpg",
+          "alt": "TOM Fashion Editorial 01",
+          "width": 1440,
+          "height": 1920,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 30 },
+            "mobile": { "x": 50, "y": 25 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-02",
+      "type": "split",
+      "splitRatio": "50/50",
+      "visible": true,
+      "order": 2,
+      "images": [
+        {
+          "id": "img-scene-2a",
+          "src": "/uploads/look-02.jpg",
+          "alt": "TOM Editorial Spread 02A",
+          "width": 1122,
+          "height": 1402,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 35 },
+            "mobile": { "x": 50, "y": 30 }
+          }
+        },
+        {
+          "id": "img-scene-2b",
+          "src": "/uploads/look-03.jpg",
+          "alt": "TOM Editorial Spread 02B",
+          "width": 1290,
+          "height": 1690,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 40 },
+            "mobile": { "x": 50, "y": 35 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-03",
+      "type": "portrait-natural",
+      "visible": true,
+      "order": 3,
+      "images": [
+        {
+          "id": "img-scene-3",
+          "src": "/uploads/look-04.jpg",
+          "alt": "TOM Editorial 03",
+          "width": 1290,
+          "height": 1625,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 45 },
+            "mobile": { "x": 50, "y": 40 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-04",
+      "type": "asymmetric",
+      "splitRatio": "65/35",
+      "visible": true,
+      "order": 4,
+      "images": [
+        {
+          "id": "img-scene-4a",
+          "src": "/uploads/look-05.jpg",
+          "alt": "TOM Asymmetric Composition 04A",
+          "width": 1290,
+          "height": 1665,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 40 },
+            "mobile": { "x": 50, "y": 35 }
+          }
+        },
+        {
+          "id": "img-scene-4b",
+          "src": "/uploads/look-06.jpg",
+          "alt": "TOM Asymmetric Composition 04B",
+          "width": 1269,
+          "height": 1694,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 35 },
+            "mobile": { "x": 50, "y": 30 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-05",
+      "type": "split",
+      "splitRatio": "50/50",
+      "visible": true,
+      "order": 5,
+      "images": [
+        {
+          "id": "img-scene-5a",
+          "src": "/uploads/look-07.jpg",
+          "alt": "TOM Editorial Spread 05A",
+          "width": 1290,
+          "height": 1588,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 45 },
+            "mobile": { "x": 50, "y": 40 }
+          }
+        },
+        {
+          "id": "img-scene-5b",
+          "src": "/uploads/look-08.jpg",
+          "alt": "TOM Editorial Spread 05B",
+          "width": 1290,
+          "height": 1704,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 45 },
+            "mobile": { "x": 50, "y": 40 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-06",
+      "type": "inset-editorial",
+      "visible": true,
+      "order": 6,
+      "images": [
+        {
+          "id": "img-scene-6",
+          "src": "/uploads/look-09.jpg",
+          "alt": "TOM Editorial 06",
+          "width": 1290,
+          "height": 1680,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 40 },
+            "mobile": { "x": 50, "y": 35 }
+          }
+        }
+      ]
+    },
+    {
+      "id": "scene-07",
+      "type": "brand-overlay",
+      "splitRatio": "60/40",
+      "visible": true,
+      "order": 7,
+      "images": [
+        {
+          "id": "img-scene-7a",
+          "src": "/uploads/look-10.jpg",
+          "alt": "TOM Asymmetric Composition 07A",
+          "width": 1536,
+          "height": 2048,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 35 },
+            "mobile": { "x": 50, "y": 30 }
+          }
+        },
+        {
+          "id": "img-scene-7b",
+          "src": "/uploads/look-02.jpg",
+          "alt": "TOM Asymmetric Composition 07B",
+          "width": 1122,
+          "height": 1402,
+          "focalPoint": {
+            "desktop": { "x": 50, "y": 35 },
+            "mobile": { "x": 50, "y": 30 }
+          }
+        }
+      ]
+    }
+  ],
+  "gallery": [
+    {
+      "id": "gal-01",
+      "src": "/uploads/look-01.jpg",
+      "alt": "TOM Look 01",
+      "caption": "",
+      "visible": true,
+      "order": 1,
+      "focalPoint": { "desktop": { "x": 50, "y": 30 }, "mobile": { "x": 50, "y": 25 } }
+    },
+    {
+      "id": "gal-02",
+      "src": "/uploads/look-02.jpg",
+      "alt": "TOM Look 02",
+      "caption": "",
+      "visible": true,
+      "order": 2,
+      "focalPoint": { "desktop": { "x": 50, "y": 35 }, "mobile": { "x": 50, "y": 30 } }
+    },
+    {
+      "id": "gal-03",
+      "src": "/uploads/look-03.jpg",
+      "alt": "TOM Look 03",
+      "caption": "",
+      "visible": true,
+      "order": 3,
+      "focalPoint": { "desktop": { "x": 50, "y": 40 }, "mobile": { "x": 50, "y": 35 } }
+    },
+    {
+      "id": "gal-04",
+      "src": "/uploads/look-04.jpg",
+      "alt": "TOM Look 04",
+      "caption": "",
+      "visible": true,
+      "order": 4,
+      "focalPoint": { "desktop": { "x": 50, "y": 45 }, "mobile": { "x": 50, "y": 40 } }
+    },
+    {
+      "id": "gal-05",
+      "src": "/uploads/look-05.jpg",
+      "alt": "TOM Look 05",
+      "caption": "",
+      "visible": true,
+      "order": 5,
+      "focalPoint": { "desktop": { "x": 50, "y": 40 }, "mobile": { "x": 50, "y": 35 } }
+    },
+    {
+      "id": "gal-06",
+      "src": "/uploads/look-06.jpg",
+      "alt": "TOM Look 06",
+      "caption": "",
+      "visible": true,
+      "order": 6,
+      "focalPoint": { "desktop": { "x": 50, "y": 35 }, "mobile": { "x": 50, "y": 30 } }
+    },
+    {
+      "id": "gal-07",
+      "src": "/uploads/look-07.jpg",
+      "alt": "TOM Look 07",
+      "caption": "",
+      "visible": true,
+      "order": 7,
+      "focalPoint": { "desktop": { "x": 50, "y": 45 }, "mobile": { "x": 50, "y": 40 } }
+    },
+    {
+      "id": "gal-08",
+      "src": "/uploads/look-08.jpg",
+      "alt": "TOM Look 08",
+      "caption": "",
+      "visible": true,
+      "order": 8,
+      "focalPoint": { "desktop": { "x": 50, "y": 45 }, "mobile": { "x": 50, "y": 40 } }
+    },
+    {
+      "id": "gal-09",
+      "src": "/uploads/look-09.jpg",
+      "alt": "TOM Look 09",
+      "caption": "",
+      "visible": true,
+      "order": 9,
+      "focalPoint": { "desktop": { "x": 50, "y": 40 }, "mobile": { "x": 50, "y": 35 } }
+    },
+    {
+      "id": "gal-10",
+      "src": "/uploads/look-10.jpg",
+      "alt": "TOM Look 10",
+      "caption": "",
+      "visible": true,
+      "order": 10,
+      "focalPoint": { "desktop": { "x": 50, "y": 35 }, "mobile": { "x": 50, "y": 30 } }
+    }
+  ],
+  "about": {
+    "title": "TOM",
+    "arabicTitle": "توم للملابس",
+    "subtitle": "",
+    "text": "رؤية معاصرة للأنوثة، تتجسد في الخطوط والتفاصيل والحضور."
+  },
+  "branches": [
+    {
+      "id": "misurata",
+      "name": "فرع مصراتة",
+      "city": "مصراتة",
+      "address": "المقاوبة مقابل نادي السويحلي",
+      "phone": "0913335999",
+      "whatsappDisplay": "0913335999",
+      "whatsappE164": "+218913335999",
+      "mapsUrl": "https://maps.app.goo.gl/zRbkT3uEaCon9Li56",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3370.438902094269!2d15.0905!3d32.3781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzLCsDIyJzQxLjIiTiAxNcKwMDUnMjUuOCJF!5e0!3m2!1sar!2sly!4v1700000000000!5m2!1sar!2sly",
+      "status": "open"
+    },
+    {
+      "id": "tripoli",
+      "name": "فرع طرابلس",
+      "city": "طرابلس",
+      "address": "النوفلين قرب سهى الحسناء",
+      "phone": "",
+      "whatsappDisplay": "",
+      "whatsappE164": "",
+      "mapsUrl": "",
+      "mapEmbedUrl": "",
+      "status": "coming-soon"
+    }
+  ],
+  "contact": {
+    "phone": "0913335999",
+    "whatsappDisplay": "0913335999",
+    "whatsappE164": "+218913335999",
+    "email": "info@tomfashion.ly",
+    "facebook": "",
+    "instagram": "https://www.instagram.com/tomlibya_/",
+    "tiktok": "https://www.tiktok.com/@tomlibya_",
+    "telegram": "https://t.me/tomcenter"
+  },
+  "seo": {
+    "title": "TOM للملابس | مجلة أزياء نسائية",
+    "description": "اكتشفي عالم TOM من خلال تشكيلات نسائية وإطلالات تُقدَّم برؤية تحريرية معاصرة.",
+    "keywords": "TOM, توم للملابس, أزياء نسائية, ملابس نسائية مصراتة, أزياء طرابلس, موضة ليبيا",
+    "ogImage": "/uploads/tom-storefront-hero.webp"
+  }
+}
