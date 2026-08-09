@@ -103,12 +103,20 @@ export default function AdminLivePreview({ config, onChange, onStageBlob, onDele
   };
 
   const moveScene = (sceneIndex: number, direction: -1 | 1) => {
-    const destination = sceneIndex + direction;
-    if (destination < 0 || destination >= config.editorialScenes.length) return;
-    const scenes = [...config.editorialScenes];
-    [scenes[sceneIndex], scenes[destination]] = [scenes[destination], scenes[sceneIndex]];
-    onChange({ ...config, editorialScenes: scenes.map((scene, order) => ({ ...scene, order: order + 1 })) });
-    setSelected({ kind: 'scene', sceneIndex: destination, imageIndex: 0 });
+    const currentScene = config.editorialScenes[sceneIndex];
+    if (!currentScene) return;
+    const visibleScenes = config.editorialScenes.filter((scene) => scene.visible).sort((a, b) => a.order - b.order);
+    const visibleIndex = visibleScenes.findIndex((scene) => scene.id === currentScene.id);
+    const destination = visibleIndex + direction;
+    if (destination < 0 || destination >= visibleScenes.length) return;
+    const destinationScene = visibleScenes[destination];
+    const scenes = config.editorialScenes.map((scene) => {
+      if (scene.id === currentScene.id) return { ...scene, order: destinationScene.order };
+      if (scene.id === destinationScene.id) return { ...scene, order: currentScene.order };
+      return scene;
+    });
+    onChange({ ...config, editorialScenes: scenes });
+    setSelected({ kind: 'scene', sceneIndex, imageIndex: 0 });
   };
 
   const controls = (target: Target, canMove = true) => {
