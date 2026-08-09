@@ -81,6 +81,7 @@ export const branchSchema = z.object({
   city: z.string(),
   address: z.string(),
   phone: z.string(),
+  workingHours: z.string().default(''),
   whatsappDisplay: z.string(),
   whatsappE164: z.string(),
   mapsUrl: z.string(),

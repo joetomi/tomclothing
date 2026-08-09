@@ -48,6 +48,17 @@ export default function StoresSection({ branches }: StoresSectionProps) {
                   {branch.address}
                 </p>
 
+                {branch.workingHours && (
+                  <div className="mt-5 border-t border-white/10 pt-4">
+                    <span className="block text-[10px] tracking-[0.18em] text-white/35">
+                      ساعات العمل
+                    </span>
+                    <p className="mt-2 whitespace-pre-line text-xs leading-6 text-white/70 md:text-sm">
+                      {branch.workingHours}
+                    </p>
+                  </div>
+                )}
+
                 {isOpen ? (
                   <div className="mt-auto grid grid-cols-2 gap-2 border-t border-white/15 pt-5 font-sans">
                     {branch.mapsUrl && (

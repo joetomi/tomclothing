@@ -688,6 +688,22 @@ export default function AdminDashboardClient({ initialContent, initialSha }: Adm
                     </div>
 
                     <div>
+                      <label className="text-xs text-tom-darkMuted block mb-1">ساعات العمل</label>
+                      <textarea
+                        rows={3}
+                        value={branch.workingHours || ''}
+                        placeholder={'السبت–الخميس: 10 صباحاً–11 مساءً\nالجمعة: 4:30 مساءً–11 مساءً'}
+                        onChange={(e) => {
+                          const updated = [...config.branches];
+                          updated[idx].workingHours = e.target.value;
+                          setConfig({ ...config, branches: updated });
+                        }}
+                        className="w-full resize-none px-3 py-2 border border-tom-stone text-sm leading-6"
+                      />
+                      <p className="mt-1 text-[10px] leading-5 text-tom-muted">يمكن كتابة الساعات بأي صيغة، وكل سطر سيظهر منفصلاً في الموقع.</p>
+                    </div>
+
+                    <div>
                       <label className="text-xs text-tom-darkMuted block mb-1">رابط Google Maps</label>
                       <input
                         type="text"

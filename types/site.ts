@@ -106,6 +106,7 @@ export interface Branch {
   city: string;
   address: string;
   phone: string;
+  workingHours: string;
   whatsappDisplay: string;
   whatsappE164: string;
   mapsUrl: string;
