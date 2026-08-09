@@ -13,63 +13,68 @@ export default function StoresSection({ branches }: StoresSectionProps) {
 
   return (
     <section id="stores" className="w-full bg-black py-16 text-white md:py-24">
-      <div className="mx-auto max-w-5xl space-y-12 px-6 md:px-12">
-        {/* Header */}
-        <div className="flex justify-between items-end border-b border-white/15 pb-4 text-right">
-          <span className="text-xs uppercase tracking-[0.25em] text-tom-muted font-sans">
-            BOUTIQUES
+      <div className="mx-auto max-w-5xl px-4 md:px-12">
+        <div className="mb-8 text-center md:mb-12">
+          <span className="font-sans text-[10px] uppercase tracking-[0.32em] text-white/45">
+            TOM BOUTIQUES
           </span>
-          <h2 className="text-2xl md:text-4xl font-serif text-white font-normal tracking-wide">
-            الـفـروع
+          <h2 className="mt-3 font-serif text-4xl font-normal text-white md:text-5xl">
+            المتاجر
           </h2>
+          <span className="mx-auto mt-5 block h-px w-12 bg-white/35" />
         </div>
 
-        {/* Store Items */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 text-right">
-          {visibleBranches.map((branch) => {
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6" dir="rtl">
+          {visibleBranches.map((branch, index) => {
             const isOpen = branch.status === 'open';
 
             return (
-              <div key={branch.id} className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="text-xs font-mono tracking-widest text-tom-muted uppercase">
-                    {isOpen ? 'STORE OPEN' : 'COMING SOON'}
+              <article key={branch.id} className="flex min-h-[260px] flex-col border border-white/15 bg-white/[0.025] p-5 text-right md:min-h-[300px] md:p-7">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <span className="font-mono text-[10px] tracking-[0.24em] text-white/35" dir="ltr">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3 className="mt-3 font-serif text-3xl text-white md:text-4xl">
+                      {branch.city}
+                    </h3>
+                  </div>
+                  <span className={`shrink-0 border px-3 py-1.5 text-[10px] font-medium tracking-wide ${isOpen ? 'border-white/35 text-white' : 'border-white/15 text-white/45'}`}>
+                    {isOpen ? 'مفتوح الآن' : 'قريباً'}
                   </span>
-                  <h3 className="text-2xl md:text-3xl font-serif text-white">
-                    {branch.city}
-                  </h3>
                 </div>
 
-                <p className="text-base text-white/90 font-sans font-light">
+                <p className="mt-6 max-w-sm font-sans text-sm font-light leading-7 text-white/70 md:text-base">
                   {branch.address}
                 </p>
 
                 {isOpen ? (
-                  <div className="pt-2 flex items-center justify-between text-sm font-sans border-t border-white/15">
+                  <div className="mt-auto grid grid-cols-2 gap-2 border-t border-white/15 pt-5 font-sans">
                     {branch.mapsUrl && (
                       <a
                         href={branch.mapsUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs tracking-widest uppercase text-white hover:text-tom-muted transition-colors underline"
+                        className="inline-flex min-h-11 items-center justify-center gap-2 bg-white px-3 text-xs font-semibold text-black transition-colors hover:bg-white/85"
                       >
-                        <span className="inline-flex items-center gap-1.5">الاتجاهات <ArrowUpRight /></span>
+                        <span>الاتجاهات</span>
+                        <ArrowUpRight className="h-4 w-4" />
                       </a>
                     )}
                     {branch.phone && (
-                      <a href={`tel:${branch.phone}`} className="font-mono text-white">
+                      <a href={`tel:${branch.phone}`} className="inline-flex min-h-11 items-center justify-center border border-white/25 px-3 font-mono text-sm text-white transition-colors hover:border-white/60">
                         {branch.phone}
                       </a>
                     )}
                   </div>
                 ) : (
-                  <div className="pt-2 border-t border-white/15">
-                    <span className="text-xs text-tom-muted tracking-widest uppercase">
-                      قـريـبـاً
+                  <div className="mt-auto border-t border-white/10 pt-5">
+                    <span className="text-xs text-white/35">
+                      سيتم الإعلان عن الافتتاح قريباً
                     </span>
                   </div>
                 )}
-              </div>
+              </article>
             );
           })}
         </div>
