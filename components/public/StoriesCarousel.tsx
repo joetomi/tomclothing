@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import { ExternalLink } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { Promotion } from '@/types/site';
 
@@ -169,17 +168,6 @@ export default function StoriesCarousel({ promotions }: { promotions: Promotion[
               <p className="mt-2 max-w-xl text-sm leading-7 text-white/75 sm:text-base">
                 {activePromotion.captionAr || activePromotion.captionEn}
               </p>
-            )}
-            {activePromotion.postUrl && (
-              <a
-                href={activePromotion.postUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="pointer-events-auto mt-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-md transition-colors hover:border-white/60 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
-              >
-                <span>عرض المنشور</span>
-                <ExternalLink aria-hidden="true" className="h-3.5 w-3.5" />
-              </a>
             )}
           </div>
         </div>

@@ -40,7 +40,6 @@ export interface Promotion {
   titleEn: string;
   captionAr: string;
   captionEn: string;
-  postUrl: string;
   enabled: boolean;
 }
 

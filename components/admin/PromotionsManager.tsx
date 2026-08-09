@@ -40,7 +40,6 @@ export default function PromotionsManager({ promotions, onChange, onStageBlob, o
         titleEn: 'NEW STORY',
         captionAr: '',
         captionEn: '',
-        postUrl: '',
         enabled: false,
       },
     ]);
@@ -169,11 +168,6 @@ export default function PromotionsManager({ promotions, onChange, onStageBlob, o
                 <textarea rows={3} value={promotion.captionEn} onChange={(event) => updatePromotion(index, { captionEn: event.target.value })} className="w-full resize-none border border-tom-stone px-3 py-2.5 text-sm font-normal leading-6" dir="ltr" />
               </label>
             </div>
-
-            <label className="block space-y-1.5 text-xs font-semibold text-tom-black">
-              <span>رابط المنشور أو الحملة</span>
-              <input type="url" value={promotion.postUrl} onChange={(event) => updatePromotion(index, { postUrl: event.target.value })} placeholder="https://www.instagram.com/p/..." className="w-full border border-tom-stone px-3 py-2.5 text-sm font-normal" dir="ltr" />
-            </label>
           </div>
         </article>
       ))}

@@ -35,7 +35,6 @@ export const promotionSchema = z.object({
   titleEn: z.string(),
   captionAr: z.string(),
   captionEn: z.string(),
-  postUrl: z.string(),
   enabled: z.boolean(),
 });
 
