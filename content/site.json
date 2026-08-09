@@ -14,13 +14,13 @@
     },
     {
       "id": "nav-stories",
-      "label": "قصص TOM",
+      "label": "مختارات TOM",
       "href": "#stories",
       "visible": true
     },
     {
       "id": "nav-about",
-      "label": "قصة TOM",
+      "label": "عن TOM",
       "href": "#about",
       "visible": true
     },
