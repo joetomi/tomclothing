@@ -155,6 +155,7 @@ export default function AdminDashboardClient({ initialContent, initialSha }: Adm
           config={config}
           onChange={setConfig}
           onStageBlob={(blob) => setStagedBlobs((current) => [...current.filter((item) => item.path !== blob.path), blob])}
+          onDeletePath={(path) => setDeletedPaths((current) => current.includes(path) ? current : [...current, path])}
           onSave={handleSave}
           saving={saving}
           onClose={() => setShowLivePreview(false)}

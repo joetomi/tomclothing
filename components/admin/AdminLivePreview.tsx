@@ -16,12 +16,13 @@ interface Props {
   config: SiteConfig;
   onChange: (config: SiteConfig) => void;
   onStageBlob: (blob: { path: string; blobSha: string }) => void;
+  onDeletePath: (path: string) => void;
   onSave: () => void;
   saving: boolean;
   onClose: () => void;
 }
 
-export default function AdminLivePreview({ config, onChange, onStageBlob, onSave, saving, onClose }: Props) {
+export default function AdminLivePreview({ config, onChange, onStageBlob, onDeletePath, onSave, saving, onClose }: Props) {
   const [selected, setSelected] = useState<Target | null>(null);
   const [replaceTarget, setReplaceTarget] = useState<Target | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -75,14 +76,28 @@ export default function AdminLivePreview({ config, onChange, onStageBlob, onSave
 
   const deleteTarget = (target: Target) => {
     if (target.kind === 'hero') {
-      onChange({ ...config, hero: { ...config.hero, visible: false } });
+      const source = config.hero.image;
+      const fallbackOg = config.editorialScenes.flatMap((scene) => scene.images)[0]?.src || '';
+      onChange({
+        ...config,
+        hero: { ...config.hero, image: '', mobileImage: undefined, visible: false },
+        gallery: config.gallery.filter((item) => item.src !== source && item.mobileImage !== source),
+        seo: { ...config.seo, ogImage: config.seo.ogImage === source ? fallbackOg : config.seo.ogImage },
+      });
+      if (source.startsWith('/uploads/')) onDeletePath(source);
     } else {
+      const source = config.editorialScenes[target.sceneIndex]?.images[target.imageIndex]?.src || '';
       const scenes = config.editorialScenes.flatMap((scene, sceneIndex) => {
         if (sceneIndex !== target.sceneIndex) return [scene];
         const images = scene.images.filter((_, imageIndex) => imageIndex !== target.imageIndex);
         return images.length ? [{ ...scene, images }] : [];
       }).map((scene, order) => ({ ...scene, order: order + 1 }));
-      onChange({ ...config, editorialScenes: scenes });
+      onChange({
+        ...config,
+        editorialScenes: scenes,
+        gallery: config.gallery.filter((item) => item.src !== source && item.mobileImage !== source),
+      });
+      if (source.startsWith('/uploads/')) onDeletePath(source);
     }
     setSelected(null);
   };

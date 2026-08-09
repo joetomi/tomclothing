@@ -115,6 +115,10 @@ export function checkImageDeletionSafety(imageUrl: string, siteConfig: SiteConfi
     usageDetails.push('قسم عن TOM');
   }
 
+  if (siteConfig.seo.ogImage === imageUrl) {
+    usageDetails.push('صورة المشاركة ومحركات البحث');
+  }
+
   return {
     isUsed: usageDetails.length > 0,
     usageDetails,
