@@ -27,8 +27,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const content = await getSiteContent();
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://tomfashion.ly'),
-    title: content.seo.title || "TOM LIBYA | ملابس نسائية في ليبيا",
-    description: content.seo.description || "اكتشفي تشكيلات TOM LIBYA من الملابس النسائية المختارة بإطلالات معاصرة وتفاصيل أنيقة.",
+    title: content.seo.title || "TOM LIBYA",
+    description: content.seo.description || "Women's Fashion Store in Libya.",
     keywords: content.seo.keywords,
     openGraph: {
       title: content.seo.title,
