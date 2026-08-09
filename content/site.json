@@ -8,31 +8,25 @@
   "navigation": [
     {
       "id": "nav-new",
-      "label": "الجديد",
+      "label": "التشكيلة الجديدة",
       "href": "#new",
       "visible": true
     },
     {
-      "id": "nav-collection",
-      "label": "التشكيلة",
-      "href": "#collection",
-      "visible": true
-    },
-    {
       "id": "nav-about",
-      "label": "عن TOM",
+      "label": "قصة TOM",
       "href": "#about",
       "visible": true
     },
     {
       "id": "nav-stores",
-      "label": "الفروع",
+      "label": "المتاجر",
       "href": "#stores",
       "visible": true
     },
     {
       "id": "nav-contact",
-      "label": "تواصل معنا",
+      "label": "تواصل",
       "href": "#contact",
       "visible": true
     }
