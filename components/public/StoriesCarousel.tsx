@@ -94,13 +94,13 @@ export default function StoriesCarousel({ promotions }: { promotions: Promotion[
         : 'opacity-100 scale-100';
 
   return (
-    <section id="stories" className="relative z-[35] -mx-2 bg-black px-4 py-5 text-white sm:px-6 sm:py-7 md:mx-0">
+    <section id="stories" className="relative z-[35] -mx-2 bg-white px-2 py-5 text-white sm:px-6 sm:py-7 md:mx-0">
       <div className="mx-auto w-full max-w-4xl">
         <div className="mb-5 text-center sm:mb-7">
-          <h2 className="font-latin text-[26px] font-semibold uppercase tracking-[0.16em] text-white sm:text-[30px]">
+          <h2 className="font-latin text-[26px] font-semibold uppercase tracking-[0.16em] text-black sm:text-[30px]">
             TOM STORIES
           </h2>
-          <span className="mx-auto mt-4 block h-px w-12 bg-white/65" />
+          <span className="mx-auto mt-4 block h-px w-12 bg-black/50" />
         </div>
 
         <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-white/10 bg-[#111] shadow-[0_24px_70px_rgba(0,0,0,0.38)] sm:aspect-[2/1]">

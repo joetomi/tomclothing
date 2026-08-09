@@ -4,16 +4,18 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function FloatingLogo({ brandName }: { brandName: string }) {
-  const [pastMasthead, setPastMasthead] = useState(false);
+  const [pastStories, setPastStories] = useState(false);
   const [utilityVisible, setUtilityVisible] = useState(false);
 
   useEffect(() => {
     const masthead = document.getElementById('mobile-masthead');
+    const stories = document.getElementById('stories');
     const utility = document.getElementById('utility-start');
     if (!masthead || !utility) return;
 
-    const mastheadObserver = new IntersectionObserver(
-      ([entry]) => setPastMasthead(!entry.isIntersecting),
+    const startElement = stories || masthead;
+    const startObserver = new IntersectionObserver(
+      ([entry]) => setPastStories(!entry.isIntersecting && entry.boundingClientRect.bottom <= 0),
       { threshold: 0 }
     );
 
@@ -22,16 +24,16 @@ export default function FloatingLogo({ brandName }: { brandName: string }) {
       { threshold: 0 }
     );
 
-    mastheadObserver.observe(masthead);
+    startObserver.observe(startElement);
     utilityObserver.observe(utility);
 
     return () => {
-      mastheadObserver.disconnect();
+      startObserver.disconnect();
       utilityObserver.disconnect();
     };
   }, []);
 
-  const visible = pastMasthead && !utilityVisible;
+  const visible = pastStories && !utilityVisible;
 
   return (
     <div
