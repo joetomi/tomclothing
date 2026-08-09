@@ -17,7 +17,7 @@ export default function Header({ brand, navigation }: HeaderProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      if (window.scrollY >= 72) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -82,16 +82,30 @@ export default function Header({ brand, navigation }: HeaderProps) {
         className="fixed left-3.5 top-3.5 z-50 flex h-11 w-11 items-center justify-center focus:outline-none md:hidden"
         aria-label="القائمة"
       >
-        <span className="relative block h-[10px] w-[27px] drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">
-          <span className="absolute left-0 top-0 block h-[2px] w-full bg-black" />
-          <span className="absolute bottom-0 left-0 block h-[2px] w-full bg-black" />
+        <span
+          className={`relative block h-[10px] w-[27px] transition-[filter] duration-300 ${
+            isScrolled ? 'drop-shadow-[0_1px_3px_rgba(0,0,0,.85)]' : 'drop-shadow-[0_1px_3px_rgba(255,255,255,.7)]'
+          }`}
+        >
+          <span className={`absolute left-0 top-0 block h-[2px] w-full transition-colors duration-300 ${isScrolled ? 'bg-white' : 'bg-black'}`} />
+          <span className={`absolute bottom-0 left-0 block h-[2px] w-full transition-colors duration-300 ${isScrolled ? 'bg-white' : 'bg-black'}`} />
         </span>
       </button>
 
       {/* Full-Screen Mobile Editorial Navigation Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black text-white flex flex-col justify-between p-8 md:hidden animate-in fade-in duration-300 select-none">
-          <div className="flex items-center justify-between border-b border-tom-charcoal pb-6">
+      <div
+        aria-hidden={!mobileMenuOpen}
+        className={`fixed inset-0 z-50 flex flex-col justify-between bg-black p-8 text-white transition-[opacity,transform,visibility] duration-500 ease-out md:hidden select-none ${
+          mobileMenuOpen
+            ? 'visible scale-100 opacity-100'
+            : 'invisible pointer-events-none scale-[1.015] opacity-0'
+        }`}
+      >
+          <div
+            className={`flex items-center justify-between border-b border-tom-charcoal pb-6 transition-[opacity,transform] duration-500 ease-out ${
+              mobileMenuOpen ? 'translate-y-0 opacity-100' : '-translate-y-3 opacity-0'
+            }`}
+          >
             <div className="relative h-8 w-28">
               <Image
                 src="/brand/logo-white.svg"
@@ -109,13 +123,16 @@ export default function Header({ brand, navigation }: HeaderProps) {
             </button>
           </div>
 
-          <nav className="flex flex-col gap-8 my-auto py-10">
-            {visibleNavs.map((nav) => (
+          <nav className="my-auto flex flex-col gap-8 py-10">
+            {visibleNavs.map((nav, index) => (
               <Link
                 key={nav.id}
                 href={nav.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between text-3xl font-serif tracking-wide border-b border-tom-charcoal pb-4 text-white/90 hover:text-white transition-colors"
+                style={{ transitionDelay: mobileMenuOpen ? `${100 + index * 55}ms` : '0ms' }}
+                className={`flex items-center justify-between border-b border-tom-charcoal pb-4 font-serif text-3xl tracking-wide text-white/90 transition-[color,opacity,transform] duration-500 ease-out hover:text-white ${
+                  mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+                }`}
               >
                 <span>{nav.label}</span>
                 <ArrowUpLeft className="h-5 w-5 text-white/55" />
@@ -123,7 +140,11 @@ export default function Header({ brand, navigation }: HeaderProps) {
             ))}
           </nav>
 
-          <div className="border-t border-tom-charcoal pt-6 space-y-2 text-xs text-tom-muted font-sans">
+          <div
+            className={`space-y-2 border-t border-tom-charcoal pt-6 font-sans text-xs text-tom-muted transition-[opacity,transform] delay-200 duration-500 ease-out ${
+              mobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-3 opacity-0'
+            }`}
+          >
             <div className="flex justify-between items-center text-white font-medium">
               <span>مصراتة - المقاوبة مقابل نادي السويحلي</span>
               <a href="tel:0913335999" className="underline font-mono">
@@ -135,7 +156,6 @@ export default function Header({ brand, navigation }: HeaderProps) {
             </p>
           </div>
         </div>
-      )}
     </>
   );
 }

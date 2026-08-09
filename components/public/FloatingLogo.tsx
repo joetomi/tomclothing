@@ -4,24 +4,43 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 export default function FloatingLogo({ brandName }: { brandName: string }) {
-  const [visible, setVisible] = useState(true);
+  const [pastMasthead, setPastMasthead] = useState(false);
+  const [utilityVisible, setUtilityVisible] = useState(false);
 
   useEffect(() => {
+    const masthead = document.getElementById('mobile-masthead');
     const utility = document.getElementById('utility-start');
-    if (!utility) return;
+    if (!masthead || !utility) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => setVisible(!entry.isIntersecting),
-      { rootMargin: '0px 0px 18% 0px', threshold: 0 }
+    const mastheadObserver = new IntersectionObserver(
+      ([entry]) => setPastMasthead(!entry.isIntersecting),
+      { threshold: 0 }
     );
-    observer.observe(utility);
-    return () => observer.disconnect();
+
+    const utilityObserver = new IntersectionObserver(
+      ([entry]) => setUtilityVisible(entry.isIntersecting),
+      { threshold: 0 }
+    );
+
+    mastheadObserver.observe(masthead);
+    utilityObserver.observe(utility);
+
+    return () => {
+      mastheadObserver.disconnect();
+      utilityObserver.disconnect();
+    };
   }, []);
+
+  const visible = pastMasthead && !utilityVisible;
 
   return (
     <div
       aria-hidden={!visible}
-      className={`pointer-events-none fixed bottom-[max(24px,env(safe-area-inset-bottom))] left-1/2 z-30 w-[clamp(260px,74vw,350px)] -translate-x-1/2 md:hidden motion-safe:transition-opacity motion-safe:duration-300 ${visible ? 'opacity-100' : 'opacity-0'}`}
+      className={`pointer-events-none fixed bottom-[max(24px,env(safe-area-inset-bottom))] left-1/2 z-30 w-[clamp(260px,74vw,350px)] -translate-x-1/2 transition-[opacity,transform] duration-500 ease-out md:hidden ${
+        visible
+          ? 'translate-y-0 scale-100 opacity-100'
+          : 'translate-y-4 scale-[0.97] opacity-0'
+      }`}
     >
       <Image
         src="/brand/logo-white-trimmed.png"
