@@ -33,6 +33,17 @@ export interface NavItem {
   visible: boolean;
 }
 
+export interface Promotion {
+  id: string;
+  image: string;
+  titleAr: string;
+  titleEn: string;
+  captionAr: string;
+  captionEn: string;
+  postUrl: string;
+  enabled: boolean;
+}
+
 export interface HeroConfig {
   image: string;
   mobileImage?: string;
@@ -125,6 +136,7 @@ export interface SEOConfig {
 export interface SiteConfig {
   brand: BrandInfo;
   navigation: NavItem[];
+  promotions: Promotion[];
   hero: HeroConfig;
   editorialScenes: EditorialScene[];
   gallery: GalleryItem[];

@@ -28,6 +28,17 @@ export const navItemSchema = z.object({
   visible: z.boolean(),
 });
 
+export const promotionSchema = z.object({
+  id: z.string().min(1),
+  image: z.string(),
+  titleAr: z.string(),
+  titleEn: z.string(),
+  captionAr: z.string(),
+  captionEn: z.string(),
+  postUrl: z.string(),
+  enabled: z.boolean(),
+});
+
 export const heroSchema = z.object({
   image: z.string(),
   mobileImage: z.string().optional(),
@@ -105,6 +116,7 @@ export const siteConfigSchema = z.object({
     seoDescription: z.string(),
   }),
   navigation: z.array(navItemSchema),
+  promotions: z.array(promotionSchema).default([]),
   hero: heroSchema,
   editorialScenes: z.array(editorialSceneSchema),
   gallery: z.array(galleryItemSchema),

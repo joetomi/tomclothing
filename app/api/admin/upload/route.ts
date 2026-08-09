@@ -14,20 +14,21 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const file = formData.get('file') as File | null;
+    const uploadKind = formData.get('kind') === 'promotion' ? 'promotion' : 'media';
 
     if (!file) {
       return NextResponse.json({ success: false, error: 'لم يتم اختيار ملف' }, { status: 400 });
     }
 
-    // 1. Validation (MIME type, file size limit 25MB)
+    // 1. Validation
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/jpg'];
     if (!allowedTypes.includes(file.type)) {
       return NextResponse.json({ success: false, error: 'صيغة الملف غير مدعومة (يسمح فقط بـ JPG, PNG, WebP)' }, { status: 400 });
     }
 
-    const MAX_SIZE = 25 * 1024 * 1024;
+    const MAX_SIZE = uploadKind === 'promotion' ? 10 * 1024 * 1024 : 25 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
-      return NextResponse.json({ success: false, error: 'حجم الصورة كبير جداً (الحد الأقصى 25MB)' }, { status: 400 });
+      return NextResponse.json({ success: false, error: `حجم الصورة كبير جداً (الحد الأقصى ${uploadKind === 'promotion' ? '10MB' : '25MB'})` }, { status: 400 });
     }
 
     const arrayBuffer = await file.arrayBuffer();
@@ -54,10 +55,15 @@ export async function POST(req: NextRequest) {
         }
       }
 
-      buffer = await sharp(buffer)
-        .resize({ width: Math.min(width, 2400), withoutEnlargement: true })
-        .webp({ quality: 93, smartSubsample: true })
-        .toBuffer();
+      buffer = uploadKind === 'promotion'
+        ? await sharp(buffer)
+            .resize({ width: 1600, height: 1600, fit: 'inside', withoutEnlargement: true })
+            .webp({ quality: 84, smartSubsample: true })
+            .toBuffer()
+        : await sharp(buffer)
+            .resize({ width: Math.min(width, 2400), withoutEnlargement: true })
+            .webp({ quality: 93, smartSubsample: true })
+            .toBuffer();
       filename = filename.replace(/\.[^.]+$/, '.webp');
 
     } catch (sharpErr) {
@@ -65,8 +71,13 @@ export async function POST(req: NextRequest) {
     }
 
     const fileSize = buffer.length;
-    const relativeUrl = `/uploads/${filename}`;
-    const repoPath = `public/uploads/${filename}`;
+    if (uploadKind === 'promotion' && fileSize > 1.8 * 1024 * 1024) {
+      return NextResponse.json({ success: false, error: 'تعذّر ضغط الصورة إلى أقل من 1.8MB. اختر صورة أبسط أو أصغر.' }, { status: 400 });
+    }
+
+    const targetFolder = uploadKind === 'promotion' ? 'promotions' : 'uploads';
+    const relativeUrl = `/${targetFolder}/${filename}`;
+    const repoPath = `public/${targetFolder}/${filename}`;
     const isGitHubConfigured = !!(process.env.GITHUB_TOKEN && process.env.GITHUB_OWNER && process.env.GITHUB_REPO);
 
     let blobSha: string | undefined;
@@ -86,7 +97,7 @@ export async function POST(req: NextRequest) {
 
     // Always attempt local disk save for dev preview fallback
     try {
-      const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+      const uploadsDir = path.join(process.cwd(), 'public', targetFolder);
       if (!fs.existsSync(uploadsDir)) {
         fs.mkdirSync(uploadsDir, { recursive: true });
       }

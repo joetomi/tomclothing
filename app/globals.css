@@ -52,3 +52,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #FFFFFF;
 }
+
+@keyframes tom-story-progress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

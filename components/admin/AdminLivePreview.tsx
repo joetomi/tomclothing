@@ -9,6 +9,7 @@ import AboutSection from '@/components/public/AboutSection';
 import StoresSection from '@/components/public/StoresSection';
 import ContactSection from '@/components/public/ContactSection';
 import Footer from '@/components/public/Footer';
+import StoriesCarousel from '@/components/public/StoriesCarousel';
 
 type Target = { kind: 'hero' } | { kind: 'scene'; sceneIndex: number; imageIndex: number };
 
@@ -150,6 +151,7 @@ export default function AdminLivePreview({ config, onChange, onStageBlob, onDele
     <div className="h-[calc(100vh-4rem)] overflow-y-auto py-8">
       <div className="admin-preview mx-auto w-[390px] max-w-[calc(100vw-2rem)] overflow-hidden bg-black shadow-2xl">
         {config.hero.visible && <Hero hero={config.hero} brand={config.brand} previewMode editorControls={controls({ kind: 'hero' }, false)} />}
+        <StoriesCarousel promotions={config.promotions} />
         {activeScenes.map((scene, sceneIndex) => <EditorialScene key={scene.id} scene={scene} index={sceneIndex} renderControls={(_, imageIndex) => controls({ kind: 'scene', sceneIndex: config.editorialScenes.findIndex((item) => item.id === scene.id), imageIndex })} />)}
         <AboutSection about={config.about} />
         <StoresSection branches={config.branches} />

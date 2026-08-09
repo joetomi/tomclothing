@@ -111,6 +111,12 @@ export function checkImageDeletionSafety(imageUrl: string, siteConfig: SiteConfi
     }
   });
 
+  (siteConfig.promotions || []).forEach((promotion, idx) => {
+    if (promotion.image === imageUrl) {
+      usageDetails.push(`قصص TOM - المنشور رقم ${idx + 1}`);
+    }
+  });
+
   if (siteConfig.about.image === imageUrl) {
     usageDetails.push('قسم عن TOM');
   }

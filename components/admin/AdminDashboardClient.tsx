@@ -6,6 +6,7 @@ import { SiteConfig, EditorialScene, Branch, MediaItem, SceneType } from '@/type
 import FocalPointEditor from './FocalPointEditor';
 import MediaManager from './MediaManager';
 import AdminLivePreview from './AdminLivePreview';
+import PromotionsManager from './PromotionsManager';
 import {
   Save,
   Eye,
@@ -20,6 +21,7 @@ import {
   CheckCircle,
   AlertCircle,
   Sparkles,
+  GalleryHorizontalEnd,
 } from 'lucide-react';
 
 interface AdminDashboardClientProps {
@@ -29,7 +31,7 @@ interface AdminDashboardClientProps {
 
 export default function AdminDashboardClient({ initialContent, initialSha }: AdminDashboardClientProps) {
   const [config, setConfig] = useState<SiteConfig>(initialContent);
-  const [activeTab, setActiveTab] = useState<'hero' | 'scenes' | 'gallery' | 'branches' | 'contact' | 'media'>('hero');
+  const [activeTab, setActiveTab] = useState<'hero' | 'stories' | 'scenes' | 'gallery' | 'branches' | 'contact' | 'media'>('hero');
   const [saving, setSaving] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
   const [showLivePreview, setShowLivePreview] = useState(false);
@@ -95,6 +97,7 @@ export default function AdminDashboardClient({ initialContent, initialSha }: Adm
 
   const allMediaList = [
     { id: 'hero-img', src: config.hero.image, caption: 'صورة الواجهة (Hero)' },
+    ...config.promotions.filter((promotion) => promotion.image).map((promotion) => ({ id: promotion.id, src: promotion.image, caption: promotion.titleAr })),
     ...config.editorialScenes.flatMap((s) => s.images.map((img) => ({ id: img.id, src: img.src, caption: img.caption }))),
     ...config.gallery.map((g) => ({ id: g.id, src: g.src, caption: g.caption })),
   ];
@@ -197,6 +200,16 @@ export default function AdminDashboardClient({ initialContent, initialSha }: Adm
           >
             <Sparkles className="w-4 h-4" />
             <span>الواجهة الرئيسية (Hero)</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab('stories')}
+            className={`flex items-center gap-2 px-4 py-2.5 text-xs tracking-wider transition-colors ${
+              activeTab === 'stories' ? 'bg-tom-black text-white' : 'bg-white text-tom-black hover:bg-tom-paper'
+            }`}
+          >
+            <GalleryHorizontalEnd className="w-4 h-4" />
+            <span>قصص TOM ({config.promotions.length})</span>
           </button>
 
           <button
@@ -366,6 +379,16 @@ export default function AdminDashboardClient({ initialContent, initialSha }: Adm
               </div>
             </div>
           </div>
+        )}
+
+        {/* TOM STORIES */}
+        {activeTab === 'stories' && (
+          <PromotionsManager
+            promotions={config.promotions}
+            onChange={(promotions) => setConfig({ ...config, promotions })}
+            onStageBlob={(blob) => setStagedBlobs((current) => [...current.filter((item) => item.path !== blob.path), blob])}
+            onDeletePath={(path) => setDeletedPaths((current) => current.includes(path) ? current : [...current, path])}
+          />
         )}
 
         {/* TAB 2: EDITORIAL SCENES */}

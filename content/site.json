@@ -13,6 +13,12 @@
       "visible": true
     },
     {
+      "id": "nav-stories",
+      "label": "قصص TOM",
+      "href": "#stories",
+      "visible": true
+    },
+    {
       "id": "nav-about",
       "label": "قصة TOM",
       "href": "#about",
@@ -29,6 +35,38 @@
       "label": "تواصل",
       "href": "#contact",
       "visible": true
+    }
+  ],
+  "promotions": [
+    {
+      "id": "tom-story-01",
+      "image": "/uploads/look-02.jpg",
+      "titleAr": "مختارات TOM",
+      "titleEn": "THE TOM EDIT",
+      "captionAr": "إطلالات مختارة ضمن رؤية TOM المعاصرة.",
+      "captionEn": "Selected looks through TOM's contemporary point of view.",
+      "postUrl": "https://www.instagram.com/tomlibya_/",
+      "enabled": true
+    },
+    {
+      "id": "tom-story-02",
+      "image": "/uploads/look-04.jpg",
+      "titleAr": "تفاصيل الحضور",
+      "titleEn": "THE DETAILS",
+      "captionAr": "خطوط وتفاصيل تصنع إطلالة متوازنة.",
+      "captionEn": "Lines and details composed for a balanced look.",
+      "postUrl": "https://www.instagram.com/tomlibya_/",
+      "enabled": true
+    },
+    {
+      "id": "tom-story-03",
+      "image": "/uploads/look-07.jpg",
+      "titleAr": "أسلوب الموسم",
+      "titleEn": "SEASON EDIT",
+      "captionAr": "اختيارات مصممة لإطلالات اليوم.",
+      "captionEn": "A considered edit for the looks of today.",
+      "postUrl": "https://www.instagram.com/tomlibya_/",
+      "enabled": true
     }
   ],
   "hero": {
